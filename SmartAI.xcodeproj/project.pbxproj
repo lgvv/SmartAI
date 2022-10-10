@@ -17,6 +17,7 @@
 		50F526D40D78F07081C3DFEE /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 752D6B58B8D6FFD85FC7C488 /* RxRelay */; };
 		5B7723C6AF40D4676A1AB6C0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7BA1DB077F41A9DC88240518 /* SnapKit */; };
 		62D31C560A340662EDC741E6 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8B9C5092EAFA33B63FD86FF7 /* RxSwift */; };
+		6CFDC074B952EF72EFA23294 /* UIFontPretendardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B0D2A34B3417D5F09ACFA5 /* UIFontPretendardTests.swift */; };
 		7D5B6F196FD1E19AEF38C0D6 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 21213B20894F7FB1FD00D296 /* RxBlocking */; };
 		9D696998B09245AD45D0C5DB /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BFC0BED211E931C42F674678 /* Pretendard-Bold.otf */; };
 		ABDE3FCFC432AD9343830EF7 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B7212326704084121872A492 /* RxSwift */; };
@@ -55,6 +56,7 @@
 		B1EED77329266017004A65BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1EED77529266017004A65BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFC0BED211E931C42F674678 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		C5B0D2A34B3417D5F09ACFA5 /* UIFontPretendardTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIFontPretendardTests.swift; sourceTree = "<group>"; };
 		F47C6AF0C3132CA18A1C4B8D /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +87,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38289F6AC7BF5057B9D35394 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C5B0D2A34B3417D5F09ACFA5 /* UIFontPretendardTests.swift */,
+			);
+			name = Extension;
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		60470B75557DC5E669F1939E /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				E4D6CDAEF01C226D83658C9C /* Support */,
+				C4665C96B1ED53A5809699AA /* Presentation */,
 			);
 			name = SmartAITests;
 			path = SmartAITests;
@@ -163,6 +175,15 @@
 				60470B75557DC5E669F1939E /* Fonts */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C4665C96B1ED53A5809699AA /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				38289F6AC7BF5057B9D35394 /* Extension */,
+			);
+			name = Presentation;
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		CD8693E939DF0076D7BF7C9A /* Presentation */ = {
@@ -313,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				197384BE68E003E95AC66A83 /* XCTestCase+BehaviorDriven.swift in Sources */,
+				6CFDC074B952EF72EFA23294 /* UIFontPretendardTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

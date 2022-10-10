@@ -1,7 +1,7 @@
 import UIKit
 
 extension UIFont {
-    enum Pretendard: String {
+    enum Pretendard: String, CaseIterable {
         case light = "Pretendard-Light"
         case regular = "Pretendard-Regular"
         case medium = "Pretendard-Medium"
