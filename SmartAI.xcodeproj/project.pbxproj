@@ -20,15 +20,18 @@
 		6CFDC074B952EF72EFA23294 /* UIFontPretendardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B0D2A34B3417D5F09ACFA5 /* UIFontPretendardTests.swift */; };
 		7D5B6F196FD1E19AEF38C0D6 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 21213B20894F7FB1FD00D296 /* RxBlocking */; };
 		9D696998B09245AD45D0C5DB /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BFC0BED211E931C42F674678 /* Pretendard-Bold.otf */; };
+		9F8E8843C68AABD42935B276 /* QualityAssessment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E814EFAF107E694CDA601B40 /* QualityAssessment.swift */; };
 		ABDE3FCFC432AD9343830EF7 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B7212326704084121872A492 /* RxSwift */; };
 		B1EED76829266015004A65BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EED76729266015004A65BC /* AppDelegate.swift */; };
 		B1EED76A29266015004A65BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EED76929266015004A65BC /* SceneDelegate.swift */; };
 		B1EED77129266017004A65BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1EED77029266017004A65BC /* Assets.xcassets */; };
 		B1EED77429266017004A65BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1EED77229266017004A65BC /* LaunchScreen.storyboard */; };
+		BB12A2E77DB6431B4A668CB3 /* BananaGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B187A17C7A6F3BE6BA1749C /* BananaGrade.swift */; };
 		C0807F2741EB6FDFFEAC4525 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5374E0693E9865A14B08A92B /* ReactorKit */; };
 		D5C3AC745B69F5EEA9F1F35B /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4B630AADB2763E9B7AA91B1F /* Pretendard-Medium.otf */; };
 		ECC5E7959E15D64EA10515F6 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = E5DDF1CDCBCB6636C6BD1352 /* ReactorKit */; };
 		FCD8E5F8F35008ABACDB8647 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F47C6AF0C3132CA18A1C4B8D /* Pretendard-SemiBold.otf */; };
+		FD9A209FDC8DE07AB9824097 /* InferenceSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042D491D694164D3742872A3 /* InferenceSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,9 +45,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		042D491D694164D3742872A3 /* InferenceSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InferenceSource.swift; sourceTree = "<group>"; };
 		3B1234C28B564ECAC8CEA786 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		473C7706AF7C67DE6882E61A /* XCTestCase+BehaviorDriven.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "XCTestCase+BehaviorDriven.swift"; sourceTree = "<group>"; };
 		4B630AADB2763E9B7AA91B1F /* Pretendard-Medium.otf */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		5B187A17C7A6F3BE6BA1749C /* BananaGrade.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BananaGrade.swift; sourceTree = "<group>"; };
 		9897DD8E1E3DE1ED9C080387 /* Pretendard-Light.otf */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
 		9A14C728FF2BEF7DE9C71525 /* UIFont+Pretendard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIFont+Pretendard.swift"; sourceTree = "<group>"; };
 		A9E2E48D1DEF673C600ECEF6 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
@@ -57,6 +62,7 @@
 		B1EED77529266017004A65BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFC0BED211E931C42F674678 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		C5B0D2A34B3417D5F09ACFA5 /* UIFontPretendardTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIFontPretendardTests.swift; sourceTree = "<group>"; };
+		E814EFAF107E694CDA601B40 /* QualityAssessment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = QualityAssessment.swift; sourceTree = "<group>"; };
 		F47C6AF0C3132CA18A1C4B8D /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +93,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		35639D5C92D902775DECCEEF /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				C6DBABBD1349214C9C67B9E2 /* Entity */,
+			);
+			name = Domain;
+			path = Domain;
+			sourceTree = "<group>";
+		};
 		38289F6AC7BF5057B9D35394 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +177,7 @@
 				B1EED78829267586004A65BC /* Supporting Files */,
 				9A1F1E9878611CCCD13E43EE /* Application */,
 				CD8693E939DF0076D7BF7C9A /* Presentation */,
+				35639D5C92D902775DECCEEF /* Domain */,
 			);
 			path = SmartAI;
 			sourceTree = "<group>";
@@ -184,6 +200,17 @@
 			);
 			name = Presentation;
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		C6DBABBD1349214C9C67B9E2 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				042D491D694164D3742872A3 /* InferenceSource.swift */,
+				5B187A17C7A6F3BE6BA1749C /* BananaGrade.swift */,
+				E814EFAF107E694CDA601B40 /* QualityAssessment.swift */,
+			);
+			name = Entity;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		CD8693E939DF0076D7BF7C9A /* Presentation */ = {
@@ -345,6 +372,9 @@
 				B1EED76829266015004A65BC /* AppDelegate.swift in Sources */,
 				B1EED76A29266015004A65BC /* SceneDelegate.swift in Sources */,
 				4EEFF4AA41596F5026E2A9B1 /* UIFont+Pretendard.swift in Sources */,
+				FD9A209FDC8DE07AB9824097 /* InferenceSource.swift in Sources */,
+				BB12A2E77DB6431B4A668CB3 /* BananaGrade.swift in Sources */,
+				9F8E8843C68AABD42935B276 /* QualityAssessment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
