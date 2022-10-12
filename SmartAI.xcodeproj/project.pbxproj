@@ -21,6 +21,8 @@
 		7D5B6F196FD1E19AEF38C0D6 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 21213B20894F7FB1FD00D296 /* RxBlocking */; };
 		9D696998B09245AD45D0C5DB /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BFC0BED211E931C42F674678 /* Pretendard-Bold.otf */; };
 		9F8E8843C68AABD42935B276 /* QualityAssessment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E814EFAF107E694CDA601B40 /* QualityAssessment.swift */; };
+		A06BAA13D08CC74E21BA2F5B /* CapturedPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64118900F81BB1DB33C65FC1 /* CapturedPhoto.swift */; };
+		A230157F9E49522DC8D4E88F /* ImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14898CE0EAF83006FF67162B /* ImageOrientation.swift */; };
 		ABDE3FCFC432AD9343830EF7 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B7212326704084121872A492 /* RxSwift */; };
 		B1EED76829266015004A65BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EED76729266015004A65BC /* AppDelegate.swift */; };
 		B1EED76A29266015004A65BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EED76929266015004A65BC /* SceneDelegate.swift */; };
@@ -46,10 +48,12 @@
 
 /* Begin PBXFileReference section */
 		042D491D694164D3742872A3 /* InferenceSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InferenceSource.swift; sourceTree = "<group>"; };
+		14898CE0EAF83006FF67162B /* ImageOrientation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageOrientation.swift; sourceTree = "<group>"; };
 		3B1234C28B564ECAC8CEA786 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		473C7706AF7C67DE6882E61A /* XCTestCase+BehaviorDriven.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "XCTestCase+BehaviorDriven.swift"; sourceTree = "<group>"; };
 		4B630AADB2763E9B7AA91B1F /* Pretendard-Medium.otf */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		5B187A17C7A6F3BE6BA1749C /* BananaGrade.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BananaGrade.swift; sourceTree = "<group>"; };
+		64118900F81BB1DB33C65FC1 /* CapturedPhoto.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CapturedPhoto.swift; sourceTree = "<group>"; };
 		9897DD8E1E3DE1ED9C080387 /* Pretendard-Light.otf */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
 		9A14C728FF2BEF7DE9C71525 /* UIFont+Pretendard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIFont+Pretendard.swift"; sourceTree = "<group>"; };
 		A9E2E48D1DEF673C600ECEF6 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
@@ -208,6 +212,8 @@
 				042D491D694164D3742872A3 /* InferenceSource.swift */,
 				5B187A17C7A6F3BE6BA1749C /* BananaGrade.swift */,
 				E814EFAF107E694CDA601B40 /* QualityAssessment.swift */,
+				14898CE0EAF83006FF67162B /* ImageOrientation.swift */,
+				64118900F81BB1DB33C65FC1 /* CapturedPhoto.swift */,
 			);
 			name = Entity;
 			path = Entity;
@@ -375,6 +381,8 @@
 				FD9A209FDC8DE07AB9824097 /* InferenceSource.swift in Sources */,
 				BB12A2E77DB6431B4A668CB3 /* BananaGrade.swift in Sources */,
 				9F8E8843C68AABD42935B276 /* QualityAssessment.swift in Sources */,
+				A230157F9E49522DC8D4E88F /* ImageOrientation.swift in Sources */,
+				A06BAA13D08CC74E21BA2F5B /* CapturedPhoto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
