@@ -7,18 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15DFE2CF216B06555C534275 /* StubNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D25A9C9E886780A53C6A40B /* StubNetworkReachability.swift */; };
 		197384BE68E003E95AC66A83 /* XCTestCase+BehaviorDriven.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473C7706AF7C67DE6882E61A /* XCTestCase+BehaviorDriven.swift */; };
 		1FF1F492FF141CC72A59935C /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B1234C28B564ECAC8CEA786 /* Pretendard-Regular.otf */; };
+		222F86008558F2BF1F997BD0 /* StubRemoteBananaQualityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334587395CB37ABAAAC0DF99 /* StubRemoteBananaQualityRepository.swift */; };
 		27EDC78E24003CBED6003D83 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9897DD8E1E3DE1ED9C080387 /* Pretendard-Light.otf */; };
 		2AC6AF74912CA4CB5B47B72B /* RemoteBananaQualityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A822D55194F7FF6FAD50697 /* RemoteBananaQualityRepository.swift */; };
 		2C8AA5ADF05FBC514D5360FF /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = F7F764839D76B5CD3873D752 /* RxTest */; };
 		33C42723B536261878ACD493 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A9E2E48D1DEF673C600ECEF6 /* Pretendard-ExtraBold.otf */; };
+		4614824930A8F8D88DBCBDA4 /* Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1308466B3E8A451CA17CDF67 /* Fixtures.swift */; };
 		4725DFE8F8297DEBA4607076 /* OnDeviceQualityInspectionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2156A95F7AB13FEFBFE9B94 /* OnDeviceQualityInspectionUseCase.swift */; };
 		4B567056FEC800201CF1B79A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 4FDC2BD7821936D884A53B42 /* RxCocoa */; };
 		4EEFF4AA41596F5026E2A9B1 /* UIFont+Pretendard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14C728FF2BEF7DE9C71525 /* UIFont+Pretendard.swift */; };
 		50F526D40D78F07081C3DFEE /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 752D6B58B8D6FFD85FC7C488 /* RxRelay */; };
 		5B7723C6AF40D4676A1AB6C0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7BA1DB077F41A9DC88240518 /* SnapKit */; };
 		62D31C560A340662EDC741E6 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8B9C5092EAFA33B63FD86FF7 /* RxSwift */; };
+		66D669336A64D99E4B4612F8 /* StubOnDeviceBananaQualityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE1D2B3426FBE6396569CAF /* StubOnDeviceBananaQualityRepository.swift */; };
 		678E67A2DACE2D762F17E59B /* CameraSessionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F6AFE27C8A2E148C5AF120 /* CameraSessionUseCase.swift */; };
 		6CFDC074B952EF72EFA23294 /* UIFontPretendardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B0D2A34B3417D5F09ACFA5 /* UIFontPretendardTests.swift */; };
 		6D625AAB8B58CA8E1C600160 /* RemoteQualityInspectionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF03EBF14C733871602140F /* RemoteQualityInspectionUseCase.swift */; };
@@ -57,12 +61,16 @@
 
 /* Begin PBXFileReference section */
 		042D491D694164D3742872A3 /* InferenceSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InferenceSource.swift; sourceTree = "<group>"; };
+		1308466B3E8A451CA17CDF67 /* Fixtures.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Fixtures.swift; sourceTree = "<group>"; };
 		14898CE0EAF83006FF67162B /* ImageOrientation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageOrientation.swift; sourceTree = "<group>"; };
 		2A822D55194F7FF6FAD50697 /* RemoteBananaQualityRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RemoteBananaQualityRepository.swift; sourceTree = "<group>"; };
+		2EE1D2B3426FBE6396569CAF /* StubOnDeviceBananaQualityRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StubOnDeviceBananaQualityRepository.swift; sourceTree = "<group>"; };
+		334587395CB37ABAAAC0DF99 /* StubRemoteBananaQualityRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StubRemoteBananaQualityRepository.swift; sourceTree = "<group>"; };
 		3B1234C28B564ECAC8CEA786 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		43B43446BD1D58DE976618FE /* NetworkReachability.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 		473C7706AF7C67DE6882E61A /* XCTestCase+BehaviorDriven.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "XCTestCase+BehaviorDriven.swift"; sourceTree = "<group>"; };
 		4B630AADB2763E9B7AA91B1F /* Pretendard-Medium.otf */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		4D25A9C9E886780A53C6A40B /* StubNetworkReachability.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StubNetworkReachability.swift; sourceTree = "<group>"; };
 		5B187A17C7A6F3BE6BA1749C /* BananaGrade.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BananaGrade.swift; sourceTree = "<group>"; };
 		64118900F81BB1DB33C65FC1 /* CapturedPhoto.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CapturedPhoto.swift; sourceTree = "<group>"; };
 		797783369EAED89D169B4D4A /* CameraError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CameraError.swift; sourceTree = "<group>"; };
@@ -277,6 +285,10 @@
 			isa = PBXGroup;
 			children = (
 				473C7706AF7C67DE6882E61A /* XCTestCase+BehaviorDriven.swift */,
+				1308466B3E8A451CA17CDF67 /* Fixtures.swift */,
+				4D25A9C9E886780A53C6A40B /* StubNetworkReachability.swift */,
+				334587395CB37ABAAAC0DF99 /* StubRemoteBananaQualityRepository.swift */,
+				2EE1D2B3426FBE6396569CAF /* StubOnDeviceBananaQualityRepository.swift */,
 			);
 			name = Support;
 			path = Support;
@@ -413,6 +425,10 @@
 			files = (
 				197384BE68E003E95AC66A83 /* XCTestCase+BehaviorDriven.swift in Sources */,
 				6CFDC074B952EF72EFA23294 /* UIFontPretendardTests.swift in Sources */,
+				4614824930A8F8D88DBCBDA4 /* Fixtures.swift in Sources */,
+				15DFE2CF216B06555C534275 /* StubNetworkReachability.swift in Sources */,
+				222F86008558F2BF1F997BD0 /* StubRemoteBananaQualityRepository.swift in Sources */,
+				66D669336A64D99E4B4612F8 /* StubOnDeviceBananaQualityRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
