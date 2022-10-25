@@ -4,4 +4,9 @@ enum CameraError: Error, Equatable {
     case captureOutputRejected
     case sessionNotConfigured
     case photoDataUnavailable
+    case unknown
+
+    init(_ error: Error) {
+        self = (error as? CameraError) ?? .unknown
+    }
 }
