@@ -5,4 +5,9 @@ enum QualityInspectionError: Error, Equatable {
     case classificationUnsupported
     case classificationEmpty
     case undecodablePhoto
+    case unknown
+
+    init(_ error: Error) {
+        self = (error as? QualityInspectionError) ?? .unknown
+    }
 }
