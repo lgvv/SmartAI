@@ -22,8 +22,20 @@ final class AppCoordinator: Coordinator {
         add(child: coordinator)
         coordinator.start()
     }
+
+    private func showResult(photo: CapturedPhoto) {
+        guard let presentingViewController = navigationController.viewControllers.first else { return }
+
+        let coordinator = ResultCoordinator(presentingViewController: presentingViewController,
+                                            photo: photo,
+                                            makeResultViewController: dependency.makeResultViewController)
+        add(child: coordinator)
+        coordinator.start()
+    }
 }
 
 extension AppCoordinator: CameraCoordinatorDelegate {
-    func cameraCoordinator(_ coordinator: CameraCoordinator, didCapture photo: CapturedPhoto) { }
+    func cameraCoordinator(_ coordinator: CameraCoordinator, didCapture photo: CapturedPhoto) {
+        showResult(photo: photo)
+    }
 }

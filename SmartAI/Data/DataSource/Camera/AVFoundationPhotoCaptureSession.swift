@@ -75,7 +75,10 @@ extension AVFoundationPhotoCaptureSession: CameraRepository {
 
     func capturePhoto() -> Single<CapturedPhoto> {
         Single.create { [weak self] observer in
-            guard let self else { return Disposables.create() }
+            guard let self else {
+                observer(.failure(CameraError.sessionNotConfigured))
+                return Disposables.create()
+            }
 
             let subscription = self.captureResult
                 .take(1)
