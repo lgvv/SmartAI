@@ -27,20 +27,28 @@ final class ResultReactor: Reactor {
     let initialState: State
 
     private let onDeviceInspection: OnDeviceQualityInspectionUseCase
+    private let remoteInspection: RemoteQualityInspectionUseCase
     private let mutationScheduler: ImmediateSchedulerType
 
     init(photo: CapturedPhoto,
          onDeviceInspection: OnDeviceQualityInspectionUseCase,
+         remoteInspection: RemoteQualityInspectionUseCase,
          mutationScheduler: ImmediateSchedulerType = MainScheduler.asyncInstance) {
         self.initialState = State(photo: photo)
         self.onDeviceInspection = onDeviceInspection
+        self.remoteInspection = remoteInspection
         self.mutationScheduler = mutationScheduler
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .viewDidLoad:
-            return inspection(onDeviceInspection.execute(photo: currentState.photo))
+            let photo = currentState.photo
+
+            return .merge(
+                inspection(onDeviceInspection.execute(photo: photo)),
+                inspection(remoteInspection.execute(photo: photo))
+            )
 
         case let .detentChanged(detent):
             return .just(.setMoreInfoVisible(detent == .large))
