@@ -732,6 +732,10 @@
 					B1EED76329266015004A65BC = {
 						CreatedOnToolsVersion = 14.0;
 					};
+					C35914F919B3099DBE4B9DD9 = {
+						CreatedOnToolsVersion = 14.0;
+						TestTargetID = B1EED76329266015004A65BC;
+					};
 				};
 			};
 			buildConfigurationList = B1EED75F29266015004A65BC /* Build configuration list for PBXProject "SmartAI" */;
@@ -1154,8 +1158,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.6.0;
 			};
 		};
 		ABF73840A80827237955D902 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
