@@ -1,8 +1,12 @@
 .DS_Store
 
+# Xcode and SwiftPM generated files
 build/
 DerivedData/
 *.xcuserstate
 xcuserdata/
+*.xcuserdatad/
+.swiftpm/
 
+# Local-only configuration
 Server.local.xcconfig
