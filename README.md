@@ -1,107 +1,109 @@
 # SmartAI
 
-카메라로 찍은 바나나 사진으로 신선도를 판별하는 iOS 앱입니다. 기기 안 CoreML과 서버의 CNN이 동시에 판별하며, 한쪽이 실패해도 다른 쪽 결과를 활용합니다.
+English | [한국어](README.ko.md)
+
+An iOS app that judges banana freshness from a photo taken with the camera. An on-device CoreML model and a server-side CNN run the judgment at the same time, and if one side fails the other's result is still used.
 
 <p align="center">
-  <img src="./ResourceFiles/ConnectedServer.gif" width="32%" alt="서버 연결 상태" />
-  <img src="./ResourceFiles/UnConnectedServer.gif" width="32%" alt="서버 미연결 상태" />
+  <img src="./ResourceFiles/ConnectedServer.gif" width="32%" alt="Server connected state" />
+  <img src="./ResourceFiles/UnConnectedServer.gif" width="32%" alt="Server disconnected state" />
 </p>
 <p align="center">
-  <sub>좌: 서버 연결 상태 · 우: 서버 미연결 상태</sub>
+  <sub>Left: server connected · Right: server disconnected</sub>
 </p>
 
 ---
 
-## 배경
+## Background
 
-| 항목 | 내용 |
+| Item | Detail |
 | --- | --- |
-| 과제명 | 스마트 물류 시스템 구축을 위한 AI(CoreML, CNN) 기반 신선식품 품질 판단 프로그램 |
-| 소속 | 건국대학교 스마트ICT융합공학과 |
-| 성과 | 2022 KU SW경진대회 장려상 🏆 |
-| 개발 기간 | 2022.09 ~ 2022.11 (2개월) |
-| 팀 구성 | 3인 (iOS · Server · AI), 이 저장소는 iOS 클라이언트만 담고 있습니다 |
-| 지원 환경 | iOS 16.0+ · Swift 5 |
+| Project | AI (CoreML, CNN) based fresh-food quality assessment program for a smart logistics system |
+| Affiliation | Konkuk University, Dept. of Smart ICT Convergence Engineering |
+| Award | Honorable Mention, 2022 KU SW Competition 🏆 |
+| Duration | 2022.09 – 2022.11 (2 months) |
+| Team | 3 members (iOS · Server · AI); this repository holds only the iOS client |
+| Requirements | iOS 16.0+ · Swift 5 |
 
-신선식품 유통에서 품질 검사는 인력에 의존합니다. 검사자마다 기준이 달라 결과가 달라질 수 있습니다. 이 문제를 CNN 기반 분류 모델로 풀었습니다. 사진 한 장을 찍으면 바나나 숙성 등급이 나옵니다.
+Quality inspection in fresh-food distribution still relies on manual labor. Different inspectors apply different standards, so results vary. This project solves that with a CNN-based classification model — take one photo and get a banana ripeness grade back.
 
-물류 현장은 네트워크가 불안정합니다. 그래서 판별 경로를 두 개로 나눴습니다.
+Logistics sites tend to have unstable networks, so the judgment path is split into two.
 
-| 경로 | 실행 위치 | 모델 | 네트워크 |
+| Path | Runs on | Model | Network |
 | --- | --- | --- | --- |
-| 온디바이스 | 기기 | CoreML 이미지 분류기 (Create ML) | 불필요 |
-| 서버 | 원격 | CNN | 필요 |
+| On-device | Device | CoreML image classifier (Create ML) | Not required |
+| Server | Remote | CNN | Required |
 
-두 경로는 동시에 실행됩니다. 하나가 실패해도 다른 하나는 영향을 받지 않습니다. 네트워크가 끊기면 서버 요청은 아예 나가지 않고, 온디바이스 결과만으로 화면이 완성됩니다.
+Both paths run concurrently. If one fails, the other is unaffected. When the network is unreachable, the server request never even goes out, and the screen is completed using only the on-device result.
 
 ---
 
-## 아키텍처
+## Architecture
 
-단일 타겟 안에서 레이어를 폴더와 프로토콜 소유권으로 나눴습니다. 의존 방향은 항상 안쪽, Domain을 향합니다.
+Layers are separated by folder and protocol ownership within a single target. Dependencies always point inward, toward Domain.
 
 ```text
 Presentation ─┐
               ├──▶ Domain ◀── Data
-Application ──┘   (Entity · Repository 프로토콜 · UseCase)
+Application ──┘   (Entity · Repository protocols · UseCase)
 ```
 
-- `Domain`: 앱의 규칙을 담습니다. 프레임워크는 모릅니다. RxSwift만 예외로 둡니다
-- `Data`: Domain 프로토콜의 구현체가 있는 곳입니다. Alamofire, Vision, AVFoundation, Network가 여기에만 나옵니다.
-- `Presentation`: ReactorKit로 만든 View와 Reactor입니다. 화면 전환은 Coordinator가 맡습니다.
-- `Application`: 조립 루트입니다. 세 레이어를 모두 아는 유일한 곳입니다.
+- `Domain`: Holds the app's business rules. Knows nothing about frameworks, with RxSwift as the sole exception.
+- `Data`: Where Domain protocol implementations live. Alamofire, Vision, AVFoundation, and Network appear only here.
+- `Presentation`: Views and Reactors built with ReactorKit. Screen transitions are owned by Coordinators.
+- `Application`: The composition root — the only place that knows about all three layers.
 
 ```text
 SmartAI/
 ├── Application/          AppDelegate · SceneDelegate · AppDependency
 ├── Domain/
 │   ├── Entity/           BananaGrade · QualityAssessment · InferenceSource
-│   │                     CapturedPhoto · ImageOrientation · 에러 타입
-│   ├── Repository/       품질 판별 · 카메라 · 네트워크 연결 프로토콜
-│   └── UseCase/          판별 · 카메라 세션 유즈케이스와 기본 구현
+│   │                     CapturedPhoto · ImageOrientation · error types
+│   ├── Repository/       Quality assessment · camera · network reachability protocols
+│   └── UseCase/          Assessment / camera session use cases and their default implementations
 ├── Data/
 │   ├── Configuration/    ServerEnvironment
 │   ├── DTO/              BananaResponseDTO
 │   ├── DataSource/
 │   │   ├── Camera/       AVFoundationPhotoCaptureSession
-│   │   ├── Network/      Alamofire 기반 API 클라이언트
-│   │   └── Vision/       Vision 기반 이미지 분류기
-│   ├── Extension/        도메인과 CoreGraphics 사이의 양방향 변환
-│   └── Repository/       Domain 프로토콜 구현체
+│   │   ├── Network/      Alamofire-based API client
+│   │   └── Vision/       Vision-based image classifier
+│   ├── Extension/        Two-way conversion between Domain types and CoreGraphics
+│   └── Repository/       Domain protocol implementations
 └── Presentation/
     ├── Common/           Coordinator
     ├── Camera/           Reactor · ViewController · PreviewView · Coordinator
     ├── Result/           Reactor · ViewController · Coordinator · SheetDetent
-    └── Chart/            ChartView(SwiftUI) · Coordinator
+    └── Chart/            ChartView (SwiftUI) · Coordinator
 ```
 
-### 화면 흐름
+### Screen flow
 
 ```text
 AppCoordinator
-   └─ CameraCoordinator ── 촬영 ──▶ ResultCoordinator (시트로 제시)
-                                        └─ ChartCoordinator (시트 내부 스택에 push)
+   └─ CameraCoordinator ── capture ──▶ ResultCoordinator (presented as a sheet)
+                                        └─ ChartCoordinator (pushed onto the sheet's internal stack)
 ```
 
-화면 전환은 Coordinator가 맡고, 화면 간 데이터 전달은 Delegate가 맡습니다. 차트는 결과 시트 안의 내비게이션 스택에 쌓입니다. 그래서 `ResultCoordinator`가 차트 전환까지 소유합니다. 스택을 쥔 쪽이 전환도 책임집니다.
+Coordinators own screen transitions; delegates carry data between screens. The chart is pushed onto the navigation stack inside the result sheet, so `ResultCoordinator` also owns the transition into the chart — whoever holds the stack is responsible for what gets pushed onto it.
 
 ---
 
-## 설계 결정
+## Design decisions
 
-Domain은 RxSwift를 씁니다. UseCase의 경계 타입을 전부 `Single`이나 `Completable`로 뒀습니다. 클로저나 `async`로 순수하게 지키려면 Presentation에서 다시 Rx로 감싸야 하는데, 그 왕복이 아깝다고 봤습니다. 대신 UIKit은 Domain에 절대 들어오지 않습니다. `CapturedPhoto`는 `UIImage`가 아니라 `Data`와 도메인 `ImageOrientation`을 들고 다니고, 이미지 디코딩은 Data 레이어에서만 일어납니다.
+Domain uses RxSwift. Every UseCase boundary type is either `Single` or `Completable`. Keeping them pure with closures or `async` would mean wrapping them back into Rx in Presentation, and that round trip wasn't worth it. In exchange, UIKit never enters Domain: `CapturedPhoto` carries `Data` and a domain `ImageOrientation` instead of a `UIImage`, and image decoding happens only in the Data layer.
 
-차트 화면에는 Reactor를 두지 않았습니다. 액션도 비동기 상태도 없는 화면에 `Action = Never`를 붙이는 건 형식뿐이라, `ChartView`와 `ChartCoordinator`만으로 끝냈습니다.
+The chart screen has no Reactor. Attaching `Action = Never` to a screen with no actions and no async state would be formality only, so `ChartView` and `ChartCoordinator` are all it needs.
 
-DataSource 프로토콜도 필요한 곳에만 뒀습니다. `BananaQualityAPIClient`는 서버 없이, `BananaImageClassifying`은 모델 없이 리포지토리를 테스트하려고 만들었습니다. 반면 `NWPathNetworkReachability`와 `AVFoundationPhotoCaptureSession`은 Domain 프로토콜을 바로 구현합니다. 같은 모양의 층을 두 번 쌓을 이유가 없었습니다.
+DataSource protocols exist only where they're needed. `BananaQualityAPIClient` and `BananaImageClassifying` were introduced so repositories could be tested without a server or a model, respectively. `NWPathNetworkReachability` and `AVFoundationPhotoCaptureSession`, on the other hand, implement Domain protocols directly — there was no reason to stack an identical extra layer.
 
-유즈케이스에도 규칙을 담았습니다. 네트워크 연결 여부는 `DefaultRemoteQualityInspectionUseCase`가 판단하고, 상위 네 등급만 보여주는 규칙은 `DefaultOnDeviceQualityInspectionUseCase`가 갖고 있습니다. 둘 다 화면 없이 테스트합니다.
+Business rules live in the use cases too. `DefaultRemoteQualityInspectionUseCase` decides network reachability, and `DefaultOnDeviceQualityInspectionUseCase` owns the rule that only the top four grades are shown. Both are tested without any screen.
 
 ---
 
-## 동시 판별과 경합
+## Concurrent assessment and race conditions
 
-결과 화면은 두 판별을 동시에 실행합니다. 콜백 두 개가 같은 배열에 값을 넣으면 순서도 결과도 보장할 수 없습니다. `ResultReactor`는 이 문제를 세 가지 장치로 막습니다.
+The result screen runs both assessments concurrently. If two callbacks push into the same array, neither ordering nor the result can be guaranteed. `ResultReactor` guards against this with three mechanisms.
 
 ```swift
 case .viewDidLoad:
@@ -121,48 +123,48 @@ func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
 }
 ```
 
-1. 각 스트림 안에 `catch`를 둬서 실패를 따로 막습니다. 서버가 죽어도 온디바이스 결과는 그대로 남습니다.
-2. `transform(mutation:)`이 모든 mutation을 한 스케줄러로 모읍니다. `reduce`는 그 안에서 하나씩만 실행됩니다.
-3. `reduce`는 출처(`InferenceSource`)로 기존 판정을 걸러내고 새로 더합니다. 같은 출처가 두 번 와도 중복되지 않습니다.
+1. A `catch` inside each stream isolates failures — if the server dies, the on-device result still survives.
+2. `transform(mutation:)` funnels every mutation through a single scheduler, so `reduce` only ever runs one at a time.
+3. `reduce` filters existing assessments by source (`InferenceSource`) before appending, so the same source arriving twice never duplicates.
 
-`mutationScheduler`는 주입할 수 있습니다. 테스트는 `CurrentThreadScheduler`를 넣어 비동기 대기 없이 상태 변화를 확인합니다.
+`mutationScheduler` is injectable. Tests supply a `CurrentThreadScheduler` to verify state changes without waiting on asynchrony.
 
 ---
 
-## 테스트
+## Testing
 
-XCTest 위에 Given/When/Then을 얇게 얹었습니다. `XCTContext.runActivity`를 쓰기 때문에 테스트 리포트에도 시나리오가 그대로 남습니다.
+A thin Given/When/Then layer sits on top of XCTest. Because it uses `XCTContext.runActivity`, the scenario itself shows up in the test report.
 
 ```swift
 func test_한쪽_실패가_다른쪽_결과를_취소하지_않는다() {
-    let (reactor, _, _) = given("서버는 실패하고 온디바이스는 성공한다") {
+    let (reactor, _, _) = given("the server fails while on-device succeeds") {
         makeSUT(onDevice: .just(onDeviceAssessment),
                 remote: .error(QualityInspectionError.networkUnavailable))
     }
 
-    when("viewDidLoad 액션을 보낸다") {
+    when("the viewDidLoad action is sent") {
         reactor.action.onNext(.viewDidLoad)
     }
 
-    then("온디바이스 판정은 남고 실패만 별도로 전달된다") {
+    then("the on-device assessment remains and the failure is delivered separately") {
         XCTAssertEqual(reactor.currentState.assessments, [onDeviceAssessment])
         XCTAssertEqual(reactor.currentState.failure, .networkUnavailable)
     }
 }
 ```
 
-테스트 38개가 서버, 카메라, CoreML 없이 전부 시뮬레이터에서 실행됩니다. 화면의 생김새도 스크린샷 대신 코드로 고정했습니다. 촬영 버튼이 하나뿐인지, 폰트가 Pretendard SemiBold 22pt인지, 고정 크기에서 버튼 하단이 774pt인지를 확인합니다.
+All 38 tests run entirely in the simulator, with no server, camera, or CoreML involved. Screen appearance is pinned in code rather than with screenshots — tests check that there's exactly one capture button, that the font is Pretendard SemiBold 22pt, and that the button's bottom edge sits at 774pt at a fixed size.
 
 ```bash
 xcodebuild -project SmartAI.xcodeproj -scheme SmartAI \
   -destination 'platform=iOS Simulator,name=iPhone 14 Pro' test
 ```
 
-`ENABLE_TESTABILITY`는 Debug에서만 켜집니다. 테스트는 Debug 구성에서 돌려야 합니다.
+`ENABLE_TESTABILITY` is only enabled in Debug, so tests must run under the Debug configuration.
 
 ---
 
-## 시작하기
+## Getting started
 
 ```bash
 git clone <repository>
@@ -170,39 +172,39 @@ cd konkuk-capstone
 open SmartAI.xcodeproj
 ```
 
-의존성은 SPM이 알아서 받습니다. 별도 설정 없이 바로 빌드됩니다.
+Dependencies are fetched automatically by SPM — the project builds with no extra setup.
 
-서버 주소는 `SmartAI/Supporting Files/Configuration/Server.xcconfig`에 기본값이 들어 있습니다. 실제 주소를 쓰려면 같은 폴더에 `Server.local.xcconfig`를 만들어 주세요(gitignore 대상입니다).
+`SmartAI/Supporting Files/Configuration/Server.xcconfig` ships with a default server address. To point at a real server, create a `Server.local.xcconfig` in the same folder (it's gitignored).
 
 ```text
-SERVER_BASE_URL = http:/$()/실제-호스트:8000/predict
+SERVER_BASE_URL = http:/$()/your-real-host:8000/predict
 ```
 
-`$()`는 `//`가 xcconfig 주석으로 읽히지 않게 끊어주는 장치입니다. `#include?`로 불러오기 때문에 파일이 없어도 빌드는 그대로 통과합니다.
+The `$()` breaks up `//` so it isn't read as an xcconfig comment. Because it's loaded with `#include?`, the build still succeeds even if the file is missing.
 
-### 알아둘 제약
+### Known constraints
 
-- 온디바이스 추론은 실기기에서만 됩니다. Create ML sceneprint 모델은 시뮬레이터에서 추론 컨텍스트를 못 만들어 Vision이 `Code=9 "Could not create inference context"`로 실패합니다. 시뮬레이터에서는 크래시 대신 `classificationUnsupported` 에러로 처리됩니다.
-- 카메라도 실기기가 필요합니다. 시뮬레이터에는 캡처 디바이스가 없어 세션 구성이 `captureDeviceUnavailable`로 끝납니다. 촬영 버튼을 눌러도 크래시하지 않고 `sessionNotConfigured`로 흘러갑니다.
+- On-device inference only works on a real device. The Create ML sceneprint model can't create an inference context in the simulator, so Vision fails with `Code=9 "Could not create inference context"`. In the simulator this is handled as a `classificationUnsupported` error instead of a crash.
+- The camera also requires a real device. The simulator has no capture device, so session configuration ends in `captureDeviceUnavailable`. Tapping the capture button doesn't crash — it flows into `sessionNotConfigured` instead.
 
 ---
 
-## 기술 스택
+## Tech stack
 
-| 영역 | 사용 |
+| Area | Used |
 | --- | --- |
-| UI | UIKit(코드 기반) · SnapKit · SwiftUI + Swift Charts |
-| 아키텍처 | Clean Architecture · ReactorKit · Coordinator · Delegate |
-| 비동기 | RxSwift · RxCocoa |
+| UI | UIKit (code-based) · SnapKit · SwiftUI + Swift Charts |
+| Architecture | Clean Architecture · ReactorKit · Coordinator · Delegate |
+| Async | RxSwift · RxCocoa |
 | ML | CoreML · Vision |
-| 카메라 | AVFoundation |
-| 네트워크 | Alamofire · Network(NWPathMonitor) |
-| 테스트 | XCTest · RxTest · RxBlocking |
+| Camera | AVFoundation |
+| Network | Alamofire · Network (NWPathMonitor) |
+| Testing | XCTest · RxTest · RxBlocking |
 
-의존성 버전은 `Package.resolved`로 고정했습니다. Alamofire 5.6.2 · ReactorKit 3.2.0 · RxSwift 6.5.0 · SnapKit 5.6.0을 씁니다.
+Dependency versions are pinned via `Package.resolved`: Alamofire 5.6.2 · ReactorKit 3.2.0 · RxSwift 6.5.0 · SnapKit 5.6.0.
 
 ---
 
-## 작성자
+## Author
 
-이건우 — iOS 클라이언트 전체 구현
+Geonwoo Lee — full implementation of the iOS client
